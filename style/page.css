@@ -139,6 +139,12 @@ body {
   text-align: justify;
 }
 
+.card .inside .sous-titre {
+  text-align: start;
+  font-weight: bolder;
+  font-size: 1.1rem;
+}
+
 .card.open {
   animation: rotate-card 1s ease-in-out forwards;
 }

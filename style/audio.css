@@ -1,0 +1,44 @@
+.audio-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: #ffffff;
+}
+
+.audio-container h1 {
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 30px;
+}
+
+@media only screen and (max-width: 700px) {
+  .audio-container h1 {
+    font-size: 1.5em;
+  }
+}
+
+.audio-container .audio {
+  margin: 15px 0;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+}
+
+.audio-container h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: black;
+}
+
+.audio-container audio {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
