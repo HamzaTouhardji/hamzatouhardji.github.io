@@ -1,3 +1,7 @@
+.video-container {
+  margin-bottom: 5rem;
+}
+
 video {
   width: 300px; /* Ajustez la largeur selon vos besoins */
   height: 533px; /* Ajustez la hauteur selon vos besoins */
