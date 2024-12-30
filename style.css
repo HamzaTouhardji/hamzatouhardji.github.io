@@ -1,0 +1,14 @@
+canvas {
+	position: absolute;
+	top: 0;
+	left: 0;
+  display:block
+}
+
+body {
+	overflow: hidden;
+}
+
+button{
+  color: wheat;
+}

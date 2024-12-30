@@ -1,0 +1,9 @@
+video {
+  width: 300px; /* Ajustez la largeur selon vos besoins */
+  height: 533px; /* Ajustez la hauteur selon vos besoins */
+  border: 5px solid #ff69b4;
+  border-radius: 20px; /* Augmentez le rayon pour des bords plus arrondis */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  object-fit: cover; /* Pour s'assurer que la vidéo couvre bien le conteneur */
+}

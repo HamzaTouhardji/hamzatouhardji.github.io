@@ -1,0 +1,364 @@
+:root {
+  --card-height: 65vh;
+  --card-width: calc(var(--card-height) / 1.5);
+  --gradient-colors: #5ddcff, #3c67e3 43%, #4e00c2;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  &:before,
+  &:after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
+
+html {
+  min-height: 100vh;
+  display: grid;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex: 1;
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  color: white;
+}
+
+.bismiallah {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  border-radius: 30px;
+  background-color: #191c29;
+}
+
+.bismiallah p {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ff6347;
+  padding: 10px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 3rem;
+  width: 90%;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+}
+
+.card-container {
+  perspective: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background: #191c29;
+  width: var(--card-width);
+  height: var(--card-height);
+  border-radius: 10px;
+  transform-style: preserve-3d;
+  transition: transform 1s ease-in-out;
+  position: relative;
+  cursor: pointer;
+}
+
+  @media only screen and (max-width: 700px) {
+    .card {
+      margin-top: 4rem;
+      width: 100%;
+    }
+  }
+
+.card .front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: #ff6347;
+  color: white;
+  font-size: 1.5em;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  padding-block: 2rem;
+}
+
+.card .front .click {
+  width: 50% !important;
+}
+
+.card .inside {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 2rem;
+  align-items: center;
+  text-align: center;
+  background: #ffffff;
+  color: #333;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+.card .inside p {
+  margin-block: .4rem;
+  text-align: justify;
+}
+
+.card.open {
+  animation: rotate-card 1s ease-in-out forwards;
+}
+
+@keyframes rotate-card {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(180deg);
+  }
+}
+
+.card.close {
+  animation: rotate-card-reverse 1s ease-in-out forwards;
+}
+
+@keyframes rotate-card-reverse {
+  0% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  animation: spin 2.5s linear infinite;
+}
+
+.card::before {
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  top: -1%;
+  left: -2%;
+}
+
+.card::after {
+  width: 100%;
+  height: 100%;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.card:hover::before,
+.card:hover::after {
+  animation: none;
+  opacity: 0;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+.heart-container {
+  margin: auto;
+  width: 4rem;
+  height: 2rem;
+}
+
+.heart {
+  position: absolute;
+  &:nth-child(1) svg {
+    opacity: 0;
+    -webkit-animation: heartUp 1.4s infinite ease-in;
+    animation: heartUp 1.4s infinite ease-in;
+  }
+  &:nth-child(2) svg {
+    position: absolute;
+    left: 1rem;
+    opacity: 0;
+    -webkit-animation: heartUp 1.4s 0.3s infinite ease-in;
+    animation: heartUp 1.4s 0.3s infinite ease-in;
+  }
+  &:nth-child(3) svg {
+    position: absolute;
+    left: 0.5rem;
+    opacity: 0;
+    -webkit-animation: heartUp 1.4s 0.6s infinite ease-in;
+    animation: heartUp 1.4s 0.6s infinite ease-in;
+  }
+}
+
+svg {
+  fill: #f58d9c;
+}
+
+@-webkit-keyframes heartUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0) rotate(10deg);
+    transform: translate3d(0, 0, 0) rotate(10deg);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  65% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -35vh, 0) scale(1.2) rotate(-10deg);
+    transform: translate3d(0, -35vh, 0) scale(1.2) rotate(-10deg);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes heartUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0) rotate(10deg);
+    transform: translate3d(0, 0, 0) rotate(10deg);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  65% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -35vh, 0) scale(1.2) rotate(-10deg);
+    transform: translate3d(0, -35vh, 0) scale(1.2) rotate(-10deg);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.continue-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+/* CSS */
+.button-19 {
+  margin-top: auto;
+  appearance: button;
+  background-color: #1899d6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #000;
+  cursor: pointer;
+  font-family: din-round, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  line-height: 20px;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter 0.2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.button-19:after {
+  background-clip: padding-box;
+  background-color: #1cb0f6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.button-19,
+.button-19:focus {
+  user-select: auto;
+}
+
+.button-19:hover:not(:disabled) {
+  filter: brightness(1.1);
+  -webkit-filter: brightness(1.1);
+}
+
+.button-19:disabled {
+  cursor: auto;
+}
+
+.button-19:active {
+  border-width: 4px 0 0;
+  background: none;
+}
+
+.button-19 img {
+  width: 20px;
+}
